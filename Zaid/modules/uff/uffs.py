@@ -18,7 +18,7 @@ async def downloader(_, message: Message):
 
 
 add_command_help(
-    "uff",
+    "uffs",
     [
         ["uff", "<username and count>`."],
         ["op", "<username and count>`."],
