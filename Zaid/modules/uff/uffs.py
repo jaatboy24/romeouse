@@ -16,3 +16,10 @@ async def downloader(_, message: Message):
     send = await client.send_document("me", downloadtargetcontent)
     os.remove(downloadtargetcontent)
 
+
+add_command_help(
+    "uffs",
+    [
+        ["uff <reply documents>"],
+    ],
+)
