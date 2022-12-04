@@ -28,3 +28,14 @@ async def delayspam_handler(app: Client, m: Message):
             await app.send_edit(m, "something wrong")
     except Exception as e:
         await app.error(m, e)
+
+
+add_command_help(
+    "spam",
+    [
+        [
+            "delayspam <seconds> <amount of spam> <text>",
+            "Send spam text with a specified delay period!",
+        ],
+    ],
+)
