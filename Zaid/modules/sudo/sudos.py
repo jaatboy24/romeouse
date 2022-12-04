@@ -46,7 +46,7 @@ async def gmute_user(client: Client, message: Message):
 
     try:
         if user.id in SUDO_USER:
-            return await ex.edit("`User already gmuted`")
+            return await ex.edit("`User already in sudo list`")
         SUDO_USER.append(user.id)
         await ex.edit(f"[{user.first_name}](tg://user?id={user.id}) Added To Sudo Users!")
     
