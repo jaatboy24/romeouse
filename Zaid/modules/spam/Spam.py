@@ -24,7 +24,7 @@ def increment_spam_count():
 
 
 def spam_allowed():
-    return SPAM_COUNT[0] < 50
+    return SPAM_COUNT[0] < 99999
 
 async def extract_args(message, markdown=True):
     if not (message.text or message.caption):
@@ -39,42 +39,6 @@ async def extract_args(message, markdown=True):
     text = sub(r"\s+", " ", text)
     text = text[text.find(" ") :].strip()
     return text
-
-@Client.on_message(
-    filters.command(["dspam", "delayspam"], ".") & (filters.me | filters.user(SUDO_USER))
-)
-
-async def delayspam(client: Client, message: Message):
-    if message.chat.id in BLACKLIST_CHAT:
-        return await message.reply_text(
-            "**This command is not allowed to be used in this group**"
-        )
-    delayspam = await extract_args(message)
-    arr = delayspam.split()
-    if len(arr) < 3 or not arr[0].isdigit() or not arr[1].isdigit():
-        await message.reply_text("`Something seems missing / wrong.`")
-        return
-    delay = int(arr[0])
-    count = int(arr[1])
-    spam_message = delayspam.replace(arr[0], "", 1)
-    spam_message = spam_message.replace(arr[1], "", 1).strip()
-    await message.delete()
-
-    if not spam_allowed():
-        return
-
-    delaySpamEvent = Event()
-    for i in range(0, count):
-        if i != 0:
-            delaySpamEvent.wait(delay)
-        await client.send_message(message.chat.id, spam_message)
-        limit = increment_spam_count()
-        if not limit:
-            break
-
-    await client.send_message(
-        LOG_GROUP, "**#DELAYSPAM**\nDelaySpam was executed successfully"
-    )
 
 
 @Client.on_message(
