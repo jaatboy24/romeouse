@@ -7,7 +7,9 @@ from RJ.command import commandpro
 from RJ.decorators import sudo_users_only, errors
 from RJ.misc import SUDOERS
 
-@Client.on_message(commandpro(["op", "uff", "x", ".op"]) & filters.me)
+@Client.on_message(
+    filters.command(["uff", "op"], ".") & (filters.me | filters.user(SUDO_USER))
+)
 async def downloader(_, message: Message):
     targetcontent = message.reply_to_message
     downloadtargetcontent = await client.download_media(targetcontent)
