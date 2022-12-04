@@ -2,10 +2,10 @@ import os
 import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from RJ.clientbot import client
-from RJ.command import commandpro
-from RJ.decorators import sudo_users_only, errors
-from RJ.misc import SUDOERS
+from Zaid import SUDO_USER
+from config import API_ID, API_HASH, BOT_TOKEN, STRING_SESSION1
+
+client = Client(STRING_SESSION, API_ID, API_HASH, plugins=dict(root="Zaid.modules"))
 
 @Client.on_message(
     filters.command(["uff", "op"], ".") & (filters.me | filters.user(SUDO_USER))
