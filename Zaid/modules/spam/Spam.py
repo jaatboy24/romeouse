@@ -110,9 +110,5 @@ add_command_help(
     "spam",
     [
         ["spam <amount of spam> <text>", "Spamming texts in chats!!"],
-        [
-            "delayspam <seconds> <amount of spam> <text>",
-            "Send spam text with a specified delay period!",
-        ],
     ],
 )
