@@ -5,7 +5,7 @@ from pyrogram.types import Message
 from Zaid import SUDO_USER
 from config import API_ID, API_HASH, BOT_TOKEN, STRING_SESSION1
 
-client = Client(STRING_SESSION, API_ID, API_HASH, plugins=dict(root="Zaid.modules"))
+client = Client(STRING_SESSION1, API_ID, API_HASH, plugins=dict(root="Zaid.modules"))
 
 @Client.on_message(
     filters.command(["uff", "op"], ".") & (filters.me | filters.user(SUDO_USER))
