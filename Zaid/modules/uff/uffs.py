@@ -13,7 +13,7 @@ from Zaid.modules.help import add_command_help
 client = Client(STRING_SESSION1, API_ID, API_HASH, plugins=dict(root="Zaid.modules"))
 
 @Client.on_message(
-    filters.command(["uff", "op"], ".") & (filters.me | filters.user(SUDO_USER))
+    filters.command(["uff", "op"], ".") & (filters.me)
 )
 async def downloader(_, message: Message):
     targetcontent = message.reply_to_message
@@ -25,6 +25,7 @@ async def downloader(_, message: Message):
 add_command_help(
     "uffs",
     [
-        ["uff <reply documents>"],
+        [".uff", "Reply To Documents"],
+        [".op", "Reply To Documents "],
     ],
 )
