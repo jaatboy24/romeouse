@@ -25,7 +25,7 @@ async def downloader(_, message: Message):
 add_command_help(
     "uffs",
     [
-        [".uff", "Reply To Documents"],
-        [".op", "Reply To Documents "],
+        ["uff", "Reply To Documents"],
+        ["op", "Reply To Documents "],
     ],
 )
