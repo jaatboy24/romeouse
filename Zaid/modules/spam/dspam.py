@@ -1,7 +1,7 @@
 import asyncio
 from pyrogram import Client, filters
 from pyrogram.types import Message
- 
+from Zaid.modules.help import add_command_help
  
 @Client.on_message(filters.command("dspam") & filters.me)
 async def delayspam_handler(app: Client, m: Message):
