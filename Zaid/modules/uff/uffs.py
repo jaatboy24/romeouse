@@ -4,6 +4,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from Zaid import SUDO_USER
 from config import API_ID, API_HASH, BOT_TOKEN, STRING_SESSION1
+from Zaid.modules.help import add_command_help
 
 client = Client(STRING_SESSION1, API_ID, API_HASH, plugins=dict(root="Zaid.modules"))
 
