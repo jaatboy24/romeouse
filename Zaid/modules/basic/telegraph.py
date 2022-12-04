@@ -45,7 +45,7 @@ async def uptotelegraph(client: Client, message: Message):
             os.remove(m_d)
             return
         U_done = (
-            f"**Uploaded on ** [Telegraph](https://telegra.ph/{media_url[0]})"
+            f"**https://telegra.ph/{media_url[0]}**"
         )
         await tex.edit(U_done)
         os.remove(m_d)
@@ -58,7 +58,7 @@ async def uptotelegraph(client: Client, message: Message):
         except exceptions.TelegraphException as exc:
             await tex.edit(f"**ERROR:** `{exc}`")
             return
-        wow_graph = f"**Uploaded as** [Telegraph](https://telegra.ph/{response['path']})"
+        wow_graph = f"**https://telegra.ph/{response['path']}**"
         await tex.edit(wow_graph)
 
 
