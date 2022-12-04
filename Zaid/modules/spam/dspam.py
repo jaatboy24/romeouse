@@ -1,9 +1,19 @@
 import asyncio
-from pyrogram import Client, filters
+from re import sub
+from threading import Event
+
+from pyrogram import Client, enums, filters
 from pyrogram.types import Message
+
+
+from config import LOG_GROUP
+from Zaid import SUDO_USER
+
 from Zaid.modules.help import add_command_help
  
-@Client.on_message(filters.command("dspam") & filters.me)
+@Client.on_message(
+    filters.command(["dspam", "delayspam"], ".") & (filters.me | filters.user(SUDO_USER))
+)
 async def delayspam_handler(app: Client, m: Message):
     try:
         reply = m.reply_to_message
@@ -29,6 +39,9 @@ async def delayspam_handler(app: Client, m: Message):
     except Exception as e:
         await app.error(m, e)
 
+        await client.send_message(
+        LOG_GROUP, "**#DELAYSPAM**\nDelaySpam was executed successfully"
+    )
 
 add_command_help(
     "spam",
